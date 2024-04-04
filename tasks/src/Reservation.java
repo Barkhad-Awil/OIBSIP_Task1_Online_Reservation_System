@@ -65,6 +65,7 @@ public class Reservation {
         System.out.printf("%-" + columnWidth + "s : %s\n", "Passenger seat number", passengerSeatNumber);
         System.out.printf("%-" + columnWidth + "s : %s\n", "Flight number", pnrID);
         System.out.printf("%-" + columnWidth + "s : %s\n", "Passenger class type", getClassType());
+        System.out.println();
     }
 
 

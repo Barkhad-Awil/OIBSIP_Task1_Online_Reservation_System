@@ -27,6 +27,7 @@ public class RegistrationForm {
         String userName = input.nextLine();
         System.out.println("Enter your password: ");
         int userPassword = input.nextInt();
+        input.nextLine(); // Consume the newline character
         System.out.println("Enter your email: ");
         String userEmail;
         while (true) {

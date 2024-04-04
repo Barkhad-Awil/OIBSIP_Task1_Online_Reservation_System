@@ -69,7 +69,7 @@ public class FlightReservationSystems {
     public void viewAllReservations(Map<Integer, Map<Integer, Object>> reservations) {
         System.out.println("All Reservations:");
         for (Map.Entry<Integer, Map<Integer, Object>> entry : reservations.entrySet()) {
-            System.out.println("Booking with PNR " + entry.getKey() + " = " + entry.getValue().toString());
+            System.out.println("Booking with PNR " + entry.getKey() + " = " + entry.getValue().values());
         }
     }
 
