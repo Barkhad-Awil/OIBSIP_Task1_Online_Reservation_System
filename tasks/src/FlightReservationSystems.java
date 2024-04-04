@@ -80,7 +80,7 @@ public class FlightReservationSystems {
         for (Map.Entry<Integer, Map<Integer, Object>> reservation : reservations.entrySet()) {
             if (reservation.getKey() == pnr) {
                 CancellationForm.cancelFlightReservation(reservations,decision, input);
-                viewAllReservations(reservations);
+//                viewAllReservations(reservations);
             }
         }
         System.out.println("Reservation with PNR " + pnr + " not found.");
