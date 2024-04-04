@@ -2,7 +2,6 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class Reservation {
-//RegistrationForm registrationForm = new RegistrationForm();
     private int pnrID;
     int reservationNum =1;
     String passengerName;

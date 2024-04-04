@@ -64,20 +64,4 @@ public class LoginForm{
     private boolean isNameValid(String userName) {
        return userDataBase.get("user1").get((String) "Name").equals(userName);
     }
-
-    /*
-        private static final String EMAIL_KEY = "Email";
-        get the email of the current login user
-                String email = currentUserEmail(userPassword);
-                FlightReservation.setPassengerInfo(userName, email);
-        private String currentUserEmail(int userPassword) {
-            for (Map.Entry<String, HashMap<String,Object>> entry: userDataBase.entrySet()){
-                if(entry.getValue().containsKey(PASSWORD_KEY) && entry.getValue().get(PASSWORD_KEY).equals(userPassword)){
-                    return (String) entry.getValue().get(EMAIL_KEY);
-                }
-            }
-            return null;
-        }
-
-     */
 }
