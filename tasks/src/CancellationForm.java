@@ -2,19 +2,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 public class CancellationForm {
-    private static int PNR;
     static boolean isCancelled;
     CancellationForm(int pnr){
-        this.PNR = pnr;
-        isCancelled = false;
-    }
-
-    public static int getPNR() {
-        return PNR;
-    }
-
-    public void setPNR(int PNR) {
-        this.PNR = PNR;
     }
 
     public static void cancelFlightReservation(Map<Integer, Map<Integer, Object>> reservations, String decision, Scanner input){

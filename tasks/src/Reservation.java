@@ -3,7 +3,6 @@ import java.util.*;
 
 public class Reservation {
     private int pnrID;
-    int reservationNum =1;
     String passengerName;
     String passengerEmail;
     String airline = "Fly Emirates";
@@ -11,7 +10,6 @@ public class Reservation {
     String originCountry;
     String classType;
     String passengerSeatNumber;
-
     LocalDateTime bookingDate;
 
     List<String> seatNumbers = new ArrayList<>(Arrays.asList("1R", "3R", "5R", "7M", "9M", "11M", "13L", "15L", "17L", "L"));
@@ -37,7 +35,6 @@ public class Reservation {
     public void setClassType(String classType) {
         this.classType = classType;
     }
-
 
     public void setSeatNumber(int seat){
         if(updateBookingSeats(seat)){
@@ -66,8 +63,6 @@ public class Reservation {
         System.out.printf("%-" + columnWidth + "s : %s\n", "Passenger class type", getClassType());
         System.out.println();
     }
-
-
 
     public Integer getPnrID() {
         return pnrID;
