@@ -94,6 +94,7 @@ public class Reservation {
 
         // Add the reservation to the hashmap with its PNR ID as the key
         reservations.put(getPnrID(), this);
+        System.out.println("This is the reservations "+reservations);
         return reservations;
     }
 

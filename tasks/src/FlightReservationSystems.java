@@ -1,3 +1,4 @@
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -7,7 +8,7 @@ public class FlightReservationSystems {
     private final RegistrationForm registrationForm; // Registration form instance
     private Reservation flightReservation; // Flight reservation instance
     // Map to store reservations with PNR as key
-    Map<Integer, Map<Integer, Object>> reservations = new HashMap<>();
+    Map<Integer, Object> reservations = new HashMap<Integer, Object>();
 
     // Constructor to initialize the registration form
     public FlightReservationSystems() {
@@ -39,11 +40,12 @@ public class FlightReservationSystems {
         flightReservation.setSeatNumber(selectedSeat);
         flightReservation.printBookingInfo();
         // Store reservation in the reservations map
-        reservations.put(flightReservation.getPnrID(), flightReservation.makeReservation());
+        Map<Integer, Object> newReservation = flightReservation.makeReservation();
+        reservations.put(flightReservation.getPnrID(), newReservation.values());
     }
 
     // Method to manage reservations
-    private void manageReservations(Map<Integer, Map<Integer, Object>> reservations) {
+    private void manageReservations(Map<Integer, Object> reservations) {
         System.out.println("Reservation Management:");
         System.out.println("1. View all reservations");
         System.out.println("2. Cancel a reservation");
@@ -78,10 +80,11 @@ public class FlightReservationSystems {
     }
 
     // Method to view all reservations
-    public void viewAllReservations(Map<Integer, Map<Integer, Object>> reservations) {
+    public void viewAllReservations(Map<Integer, Object> reservations) {
         System.out.println("All Reservations:");
-        for (Map.Entry<Integer, Map<Integer, Object>> entry : reservations.entrySet()) {
-            System.out.println("Booking with PNR " + entry.getKey() + " = " + entry.getValue().values());
+        System.out.println(reservations);
+        for (Map.Entry<Integer, Object> entry : reservations.entrySet()) {
+            System.out.println("Booking with PNR " + entry.getKey() + " = " + entry.getValue());
         }
     }
 
@@ -98,13 +101,13 @@ public class FlightReservationSystems {
     }
 
     // Method to cancel a reservation
-    private void cancelReservation(Map<Integer, Map<Integer, Object>> reservations, int pnr) {
+    private void cancelReservation(Map<Integer, Object> reservations, int pnr) {
         Scanner input = new Scanner(System.in);
         System.out.println("Do you want to proceed with flight cancellation");
         String decision = input.nextLine();
-        for (Map.Entry<Integer, Map<Integer, Object>> reservation : reservations.entrySet()) {
+        for (Map.Entry<Integer, Object> reservation : reservations.entrySet()) {
             if (reservation.getKey() == pnr) {
-                CancellationForm.cancelFlightReservation(reservations, decision, input);
+                CancellationForm.cancelFlightReservation(reservations, decision, input, pnr);
             }
         }
         System.out.println("Reservation with PNR " + pnr + " not found.");
@@ -121,6 +124,7 @@ public class FlightReservationSystems {
             int choice;
             Scanner scanner = new Scanner(System.in);
             do {
+                System.out.println();
                 System.out.println("What would you like to do?");
                 System.out.println("1. Book a flight");
                 System.out.println("2. Manage reservations");

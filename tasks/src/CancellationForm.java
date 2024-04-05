@@ -6,8 +6,7 @@ public class CancellationForm {
     static boolean isCancelled; // Flag to track if a flight is cancelled
 
     // Method to cancel a flight reservation
-    public static void cancelFlightReservation(Map<Integer, Map<Integer, Object>> reservations, String decision, Scanner input) {
-        int pnr = input.nextInt();
+    public static void cancelFlightReservation(Map<Integer, Object> reservations, String decision, Scanner input, int pnr) {
         if (decision.equalsIgnoreCase("yes") && !isCancelled()) {
             isCancelled = true;
             reservations.remove(pnr);
