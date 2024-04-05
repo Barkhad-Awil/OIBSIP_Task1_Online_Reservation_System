@@ -7,7 +7,6 @@ public class CancellationForm {
 
     // Method to cancel a flight reservation
     public static void cancelFlightReservation(Map<Integer, Map<Integer, Object>> reservations, String decision, Scanner input) {
-        System.out.print("Enter the PNR for the flight you want to cancel: ");
         int pnr = input.nextInt();
         if (decision.equalsIgnoreCase("yes") && !isCancelled()) {
             isCancelled = true;
