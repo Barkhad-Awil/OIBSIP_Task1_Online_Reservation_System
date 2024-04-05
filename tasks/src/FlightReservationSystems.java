@@ -1,14 +1,11 @@
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 // Class to manage flight reservation systems
 public class FlightReservationSystems {
     private final RegistrationForm registrationForm; // Registration form instance
     private Reservation flightReservation; // Flight reservation instance
     // Map to store reservations with PNR as key
-    Map<Integer, Object> reservations = new HashMap<Integer, Object>();
+    Map<Integer, Object> reservations = new HashMap<>();
 
     // Constructor to initialize the registration form
     public FlightReservationSystems() {
@@ -40,8 +37,7 @@ public class FlightReservationSystems {
         flightReservation.setSeatNumber(selectedSeat);
         flightReservation.printBookingInfo();
         // Store reservation in the reservations map
-        Map<Integer, Object> newReservation = flightReservation.makeReservation();
-        reservations.put(flightReservation.getPnrID(), newReservation.values());
+        reservations.put(flightReservation.getPnrID(), flightReservation.makeReservation());
     }
 
     // Method to manage reservations
@@ -84,7 +80,7 @@ public class FlightReservationSystems {
         System.out.println("All Reservations:");
         System.out.println(reservations);
         for (Map.Entry<Integer, Object> entry : reservations.entrySet()) {
-            System.out.println("Booking with PNR " + entry.getKey() + " = " + entry.getValue());
+            System.out.println("Booking with PNR " + entry.getKey() + " = " + entry.getValue().toString());
         }
     }
 
@@ -100,7 +96,7 @@ public class FlightReservationSystems {
         }
     }
 
-    // Method to cancel a reservation
+//     Method to cancel a reservation
     private void cancelReservation(Map<Integer, Object> reservations, int pnr) {
         Scanner input = new Scanner(System.in);
         System.out.println("Do you want to proceed with flight cancellation");
@@ -108,10 +104,13 @@ public class FlightReservationSystems {
         for (Map.Entry<Integer, Object> reservation : reservations.entrySet()) {
             if (reservation.getKey() == pnr) {
                 CancellationForm.cancelFlightReservation(reservations, decision, input, pnr);
+                break;
             }
         }
         System.out.println("Reservation with PNR " + pnr + " not found.");
     }
+
+
 
     // Method to run the flight reservation system
     public void run() {

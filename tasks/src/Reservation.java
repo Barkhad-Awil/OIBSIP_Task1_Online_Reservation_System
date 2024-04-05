@@ -4,6 +4,7 @@ import java.util.*;
 // Class to manage flight reservations
 public class Reservation {
     private final int pnrID; // Booking reference ID
+    public  static int flightNumber = 0;
     private final String passengerName; // Name of the passenger
     private final String passengerEmail; // Email of the passenger
     private final String destinationCountry; // Destination country
@@ -24,6 +25,7 @@ public class Reservation {
         this.originCountry = originCountry;
         this.destinationCountry = destinationCountry;
         this.classType = classType;
+        flightNumber++;
 
         // Generate a random PNR ID and set booking date to current date and time
         Random random = new Random();
@@ -89,13 +91,8 @@ public class Reservation {
     }
 
     // Method to make a reservation and return a map containing the reservation details
-    public Map<Integer, Object> makeReservation() {
-        Map<Integer, Object> reservations = new HashMap<>();
-
-        // Add the reservation to the hashmap with its PNR ID as the key
-        reservations.put(getPnrID(), this);
-        System.out.println("This is the reservations "+reservations);
-        return reservations;
+    public List<String> makeReservation() {
+        return List.of(String.valueOf(flightNumber), passengerName, passengerEmail, originCountry, destinationCountry, classType);
     }
 
     // Method to represent the object as a string
