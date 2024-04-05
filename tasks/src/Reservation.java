@@ -53,7 +53,6 @@ public class Reservation {
     }
     // Method to check if a seat is available
     public boolean isSeatAvailable(int seatNumber) {
-        List<String> seatNumbers = new ArrayList<>(Arrays.asList("1R", "3R", "5R", "7M", "9M", "11M", "13L", "15L", "17L", "L"));
         // Check if the seat number is within the valid range
         if (seatNumber >= 0 && seatNumber < seatNumbers.size()) {
             // Get the seat number from the list
