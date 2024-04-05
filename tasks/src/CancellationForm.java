@@ -9,8 +9,12 @@ public class CancellationForm {
     public static void cancelFlightReservation(Map<Integer, Object> reservations, String decision, Scanner input, int pnr) {
         if (decision.equalsIgnoreCase("yes") && !isCancelled()) {
             isCancelled = true;
-            reservations.remove(pnr);
-            System.out.println("Flight number " + pnr + " has been cancelled.");
+            if (reservations.containsKey(pnr)) {
+                reservations.remove(pnr);
+                System.out.println("Flight number " + pnr + " has been cancelled.");
+            } else {
+                System.out.println("Flight number " + pnr + " not found.");
+            }
         } else {
             System.out.println("Flight number " + pnr + " has not been cancelled.");
         }
