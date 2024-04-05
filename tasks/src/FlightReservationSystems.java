@@ -47,6 +47,7 @@ public class FlightReservationSystems {
         System.out.println("Reservation Management:");
         System.out.println("1. View all reservations");
         System.out.println("2. Cancel a reservation");
+        System.out.println("3. Check available seats");
         System.out.print("Enter your choice: ");
 
         Scanner scanner = new Scanner(System.in);
@@ -63,6 +64,9 @@ public class FlightReservationSystems {
                 int pnr = input.nextInt();
                 cancelReservation(reservations, pnr);
                 break;
+            case 3:
+                checkAvailableSeats();
+                break;
             default:
                 System.out.println("Invalid choice.");
         }
@@ -78,6 +82,18 @@ public class FlightReservationSystems {
         System.out.println("All Reservations:");
         for (Map.Entry<Integer, Map<Integer, Object>> entry : reservations.entrySet()) {
             System.out.println("Booking with PNR " + entry.getKey() + " = " + entry.getValue().values());
+        }
+    }
+
+    private void checkAvailableSeats() {
+        System.out.println("Available Seats:");
+        System.out.println("Seat Number\tStatus");
+        for (int i = 0; i < 10; i++) {
+            if (flightReservation.isSeatAvailable(i)) {
+                System.out.println(i + "\t\tAvailable");
+            } else {
+                System.out.println(i + "\t\tBooked");
+            }
         }
     }
 

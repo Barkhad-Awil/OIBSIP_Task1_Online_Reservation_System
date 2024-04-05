@@ -14,7 +14,7 @@ public class Reservation {
     private LocalDateTime bookingDate; // Booking date and time
 
     // List of available seat numbers
-    List<String> seatNumbers = new ArrayList<>(Arrays.asList("1R", "3R", "5R", "7M", "9M", "11M", "13L", "15L", "17L", "L"));
+    List<String> seatNumbers = new ArrayList<>(Arrays.asList("1R", "3R", "5R", "7M", "9M", "11M", "13L", "15L", "17L", "18L"));
     // List to track available seats
     private final List<Boolean> bookAvailableSeats = new ArrayList<>(Collections.nCopies(seatNumbers.size(), true));
 
@@ -50,6 +50,20 @@ public class Reservation {
     // Method to update available seats
     private boolean updateBookingSeats(int seat) {
         return bookAvailableSeats.get(seat);
+    }
+    // Method to check if a seat is available
+    public boolean isSeatAvailable(int seatNumber) {
+        List<String> seatNumbers = new ArrayList<>(Arrays.asList("1R", "3R", "5R", "7M", "9M", "11M", "13L", "15L", "17L", "L"));
+        // Check if the seat number is within the valid range
+        if (seatNumber >= 0 && seatNumber < seatNumbers.size()) {
+            // Get the seat number from the list
+            String seat = seatNumbers.get(seatNumber);
+            // Check if the seat is available by looking it up in the list of booked seats
+            return bookAvailableSeats.get(seatNumbers.indexOf(seat));
+        } else {
+            // If the seat number is invalid, return false
+            return false;
+        }
     }
 
     // Method to print booking information
