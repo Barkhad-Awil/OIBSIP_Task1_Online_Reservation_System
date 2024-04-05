@@ -8,6 +8,7 @@ The Flight Reservation System is a Java application designed to streamline the p
 - **User Login:** Registered users can securely log in to the system using their credentials.
 - **Flight Booking:** Users can browse available flights, select seat numbers, specify origin and destination countries, and choose their preferred class type (business or economy).
 - **Reservation Management:** Users have the ability to view all their existing reservations and cancel bookings if needed.
+- **Checking Seat Availability:** Users can check the availability of seats before booking a flight to ensure they can find suitable options.
 
 ## Technologies Used
 - **Java:** The core programming language used for developing the application.
