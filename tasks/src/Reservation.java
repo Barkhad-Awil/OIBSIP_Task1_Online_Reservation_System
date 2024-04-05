@@ -3,15 +3,14 @@ import java.util.*;
 
 // Class to manage flight reservations
 public class Reservation {
-    private int pnrID; // Booking reference ID
-    private String passengerName; // Name of the passenger
-    private String passengerEmail; // Email of the passenger
-    private String airline = "Fly Emirates"; // Airline company
-    private String destinationCountry; // Destination country
-    private String originCountry; // Origin country
-    private String classType; // Class type (e.g., economy, business)
+    private final int pnrID; // Booking reference ID
+    private final String passengerName; // Name of the passenger
+    private final String passengerEmail; // Email of the passenger
+    private final String destinationCountry; // Destination country
+    private final String originCountry; // Origin country
+    private final String classType; // Class type (e.g., economy, business)
     private String passengerSeatNumber; // Seat number
-    private LocalDateTime bookingDate; // Booking date and time
+    private final LocalDateTime bookingDate; // Booking date and time
 
     // List of available seat numbers
     List<String> seatNumbers = new ArrayList<>(Arrays.asList("1R", "3R", "5R", "7M", "9M", "11M", "13L", "15L", "17L", "18L"));
@@ -67,6 +66,8 @@ public class Reservation {
 
     // Method to print booking information
     public void printBookingInfo() {
+        // Airline company
+        String airline = "Fly Emirates";
         System.out.println("Thank you for choosing " + airline + " for your upcoming journey.");
         System.out.println("Your booking details are as follows:");
         int columnWidth = 25;
@@ -88,12 +89,11 @@ public class Reservation {
     }
 
     // Method to make a reservation and return a map containing the reservation details
-    public Map<Integer, Object> makeReservation(String passengerName, String passengerEmail) {
+    public Map<Integer, Object> makeReservation() {
         Map<Integer, Object> reservations = new HashMap<>();
 
         // Add the reservation to the hashmap with its PNR ID as the key
         reservations.put(getPnrID(), this);
-
         return reservations;
     }
 

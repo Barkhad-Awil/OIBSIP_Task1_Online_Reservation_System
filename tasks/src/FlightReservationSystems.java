@@ -39,7 +39,7 @@ public class FlightReservationSystems {
         flightReservation.setSeatNumber(selectedSeat);
         flightReservation.printBookingInfo();
         // Store reservation in the reservations map
-        reservations.put(flightReservation.getPnrID(), flightReservation.makeReservation(name, email));
+        reservations.put(flightReservation.getPnrID(), flightReservation.makeReservation());
     }
 
     // Method to manage reservations
