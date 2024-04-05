@@ -103,7 +103,7 @@ public class FlightReservationSystems {
         String decision = input.nextLine();
         for (Map.Entry<Integer, Object> reservation : reservations.entrySet()) {
             if (reservation.getKey() == pnr) {
-                CancellationForm.cancelFlightReservation(reservations, decision, input, pnr);
+                CancellationForm.cancelFlightReservation(reservations, decision, pnr);
                 break;
             }
         }

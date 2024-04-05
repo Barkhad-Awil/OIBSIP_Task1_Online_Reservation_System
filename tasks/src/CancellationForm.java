@@ -1,12 +1,11 @@
 import java.util.Map;
-import java.util.Scanner;
 
 // Class to handle flight cancellation form
 public class CancellationForm {
     static boolean isCancelled; // Flag to track if a flight is cancelled
 
     // Method to cancel a flight reservation
-    public static void cancelFlightReservation(Map<Integer, Object> reservations, String decision, Scanner input, int pnr) {
+    public static void cancelFlightReservation(Map<Integer, Object> reservations, String decision, int pnr) {
         if (decision.equalsIgnoreCase("yes") && !isCancelled()) {
             isCancelled = true;
             if (reservations.containsKey(pnr)) {
